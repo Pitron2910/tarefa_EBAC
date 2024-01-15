@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    color: #5D5C61;
+}
+
+#taskForm {
+    margin-bottom: 20px;
+}
+
+#taskInput {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#taskForm button {
+    padding: 10px 15px;
+    background-color: #5D5C61;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#taskForm button:hover {
+    background-color: #343a40;
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+}
+
+#taskList li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#taskList li:hover {
+    background-color: #f8f9fa;
+}
+
+    
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
+        <button type="submit">Adicionar Tarefa</button>
+    </form>
+    <ol id="taskList"></ol>
+
+    <script>
+        $(document).ready(function() {
+            $('#taskForm').submit(function(event) {
+                event.preventDefault();
+                var taskName = $('#taskInput').val();
+                if (taskName) {
+                    $('#taskList').append('<li>' + taskName + '</li>'); 
+                    $('#taskInput').val(''); 
+                }
+            });
+
+            $(document).on('click', '#taskList li', function() {
+                $(this).css('text-decoration', 'line-through');
+            });
+        });
+    </script>
+</body>
+</html>
